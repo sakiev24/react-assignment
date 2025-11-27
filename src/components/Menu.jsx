@@ -12,12 +12,25 @@ function Menu({ links = [] }) {
     fontWeight: 'bold'
   };
 
+  // Handle click to prevent default behavior
+  const handleClick = (e) => {
+    e.preventDefault();
+    // You can add navigation logic here later
+    console.log('Link clicked');
+  };
+
   return (
     <nav>
       <ul style={navStyle}>
         {links.map((link, index) => (
           <li key={index}>
-            <a href="#" style={linkStyle}>{link}</a>
+            <a 
+              href={`/${link.toLowerCase()}`}  // Changed from "#" to valid URL
+              style={linkStyle}
+              onClick={handleClick}
+            >
+              {link}
+            </a>
           </li>
         ))}
       </ul>
